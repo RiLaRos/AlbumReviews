@@ -8,9 +8,7 @@
         $("#btnViewAlbum").click(function () {
             var idAlbum = $("#ddlAlbums").val();
             Albums.Actions.GetAlbumImages(idAlbum);
-        });
-
-        
+        });        
     },
     Actions: {
         GetAlbums: function () {
@@ -29,22 +27,10 @@
         },
         GetAlbumImages: function (idAlbum) {
             $.ajax({
-                url: "https://jsonplaceholder.typicode.com/photos?albumId=" + idAlbum
+                url: urlPhotos + "?albumId=" + idAlbum
             }).done(function (data) {
                 if (data != null) {
-
-                    var rowData = "";
-                    
-                    $(data).each(function (ind, row) {
-                        rowData += "<tr><td>" + row.title + "</td><td><img src='" + row.thumbnailUrl + "' /></td><td><button class='btn btn-primary showComments' data-id=" + row.id + ">Ver comentarios</button></td></tr>";
-                    });
-
-                    $("#photos").html(rowData);
-
-                    $(".showComments").click(function () {
-                        var postId = $(this).data("id");
-                        Albums.Actions.GetComments(postId);
-                    });
+                    $("#photos").html(data);
                 }
             });
         },

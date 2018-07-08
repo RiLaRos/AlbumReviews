@@ -19,7 +19,7 @@
 </div>
 <hr />
 <div class="row">
-    <div class="col-md-12" style="height:350px; overflow-y:scroll;">
+    <div class="col-md-12" style="height:350px; overflow-y:scroll;" id="photos">
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
@@ -28,8 +28,7 @@
                     <th class="center">Accion</th>
                 </tr>
             </thead>
-
-            <tbody id="photos">
+            <tbody>
                 <tr>
                     <td colspan="3">No hay elementos para mostrar</td>
                 </tr>
@@ -59,5 +58,8 @@
 </div>
 
 @section scripts{
+    <script>
+        var urlPhotos = '@Url.Action("GetPhotos", "Albums")';
+    </script>
     <script src="~/Scripts/pages/Albums.js"></script>
 }
