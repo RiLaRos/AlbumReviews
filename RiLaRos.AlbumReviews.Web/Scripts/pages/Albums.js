@@ -36,17 +36,10 @@
         },
         GetComments: function (postId) {
             $.ajax({
-                url: "https://jsonplaceholder.typicode.com/comments?postId=" + postId
+                url: urlComments + "?postId=" + postId
             }).done(function (data) {
                 if (data != null) {
-
-                    var rowData = "";
-
-                    $(data).each(function (ind, row) {
-                        rowData += "<tr><td>" + row.name + "</td><td>" + row.email + "</td><td>" + row.body + "</td></tr>";
-                    });
-
-                    $("#comments").html(rowData);
+                    $("#comments").html(data);
                 }
             });
         }

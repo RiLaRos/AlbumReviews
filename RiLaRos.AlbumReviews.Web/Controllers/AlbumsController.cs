@@ -21,5 +21,14 @@ namespace RiLaRos.AlbumReviews.Web.Controllers
 
             return PartialView("_PhotosPartial", response.Data);
         }
+
+        public ActionResult ShowComments(int postId)
+        {
+            var client = new RestClient("https://jsonplaceholder.typicode.com/comments?postId=" + postId);
+
+            var response = client.Execute<List<Comment>>(new RestRequest());
+
+            return PartialView("_CommentsPartial", response.Data);
+        }
     }
 }
